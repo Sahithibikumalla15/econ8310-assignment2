@@ -41,16 +41,14 @@ test_data = test_data.reindex(columns=X.columns, fill_value=0)  # Ensure same co
 
 # Make predictions using the trained model
 pred = modelFit.predict(test_data)
-pred = [int(p) for p in pred]  # Convert to required format
+pred = [int(p) for p in pred]
 
-# Save predictions
 pd.DataFrame(pred, columns=["meal_prediction"]).to_csv("predictions.csv", index=False)
 
-# Save the trained model
 joblib.dump(modelFit, "modelFit.pkl")
 
 # Print sample output
 if __name__ == "__main__":
     print("Sample predictions:")
     print(pred[:5])
-    print("Best model selected and predictions saved successfully.")
+    print("Best model selected.")
